@@ -8,4 +8,19 @@ class Api::ParamsGameAppController < ApplicationController
     end
     render "params_game_app.json.jb"
   end
+
+  def params_number_action
+    x = 38
+    guess = params["guess"]
+    if guess.to_i < x
+      @message = "#{guess} is too low... try again!"
+    elsif guess.to_i > x
+      @message = "#{guess} is too high! try again!"
+    elsif guess.to_i == x
+      @message = "YESSSSSS! #{guess} is exactly right!!"
+    else
+      @message = "naw dude."
+    end
+    render "params_number.json.jb"
+  end
 end
